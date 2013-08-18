@@ -1,0 +1,47 @@
+name: ChatChannels
+main: net.mayateck.ChatChannels.ChatChannels
+version: 0.01
+
+commands:
+   channel:
+      description: Channel Switch Command
+      usage: /channel <channel>
+      permission: chatchannels.channel
+      permission-message: 'Permission Error: You do not have access to switch channels.'
+   chatchannel:
+      description: ChatChannel Admin Commands
+      usage: /chatchannel <sub-command> <args>
+      permission: chatchannels.admin
+      permission-message: 'Permission Error: You do not have access to that command.'
+   local:
+      description: 'Command alias for /channel local.'
+      usage: /local
+      permission: chatchannels.local
+      permission-message: 'Permission Error: You do not have access to the local channel.'
+   global:
+      description: 'Command alias for /channel local.'
+      usage: /global
+      permission: chatchannels.local
+      permission-message: 'Permission Error: You do not have access to the local channel.'
+
+permissions:
+   chatchannels.*:
+      description: 'Full access to all channels.'
+      children:
+         eden.channel: true
+         eden.group: false
+   chatchannels.channel:
+      description: 'Allows the user to change channels.'
+      children:
+         chatchannels.channel.global: true
+         chatchannels.channel.local: true
+         chatchannels.channel.team: true
+         chatchannels.channel.faction: true
+         chatchannels.channel.zone: true
+         chatchannels.channel.mod: false
+         chatchannels.channel.admin: false
+   chatchannels.group:
+      description: 'User status in relation to ChatChannel.'
+      children:
+         chatchannels.group.mod: false
+         chatchannels.group.admin: false
