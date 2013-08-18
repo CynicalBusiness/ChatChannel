@@ -1,0 +1,25 @@
+
+channels:
+   global:
+      tag: '[Global]'
+      color: 'e'
+   local:
+      tag: '[Local]'
+      color: 'f'
+   zone:
+      tag: '[Zone]'
+      color: '7'
+   mod:
+      tag: '[Mod]'
+      color: '9'
+   admin:
+      tag: '[Admin]'
+      color: 'c'
+   broadcast:
+      tag: '[Broadcast]'
+      color: '3'
+      interval_minutes: 4
+      random: false
+      broadcasts:
+         - '&9ChatChannels &fmade by &6Wehttam664&f.'
+         - 'Check us out on &eBukkitDev&f!'
