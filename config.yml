@@ -2,13 +2,13 @@
 channels:
    global:
       tag: '[Global]'
-      color: 'e'
+      color: 'f'
    local:
       tag: '[Local]'
-      color: 'f'
+      color: '7'
    zone:
       tag: '[Zone]'
-      color: '7'
+      color: 'e'
    mod:
       tag: '[Mod]'
       color: '9'
