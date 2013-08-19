@@ -35,8 +35,6 @@ permissions:
       children:
          chatchannels.channel.global: true
          chatchannels.channel.local: true
-         chatchannels.channel.team: true
-         chatchannels.channel.faction: true
          chatchannels.channel.zone: true
          chatchannels.channel.mod: false
          chatchannels.channel.admin: false
