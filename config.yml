@@ -15,6 +15,9 @@ channels:
    admin:
       tag: '[Admin]'
       color: 'c'
+   help:
+      tag: '[Help]'
+      color: 'd'
    broadcast:
       tag: '[Broadcast]'
       color: '3'
