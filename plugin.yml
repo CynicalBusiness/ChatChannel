@@ -28,8 +28,8 @@ permissions:
    chatchannels.*:
       description: 'Full access to all channels.'
       children:
-         eden.channel: true
-         eden.group: false
+         chatchannels.channel: true
+         chatchannels.group: false
    chatchannels.channel:
       description: 'Allows the user to change channels.'
       children:
@@ -38,6 +38,7 @@ permissions:
          chatchannels.channel.zone: true
          chatchannels.channel.mod: false
          chatchannels.channel.admin: false
+         chatchannels.channel.help: true
    chatchannels.group:
       description: 'User status in relation to ChatChannel.'
       children:
