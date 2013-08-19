@@ -21,7 +21,7 @@ public class ChatChannels extends JavaPlugin implements Listener{
 	
 	@Override
 	public void onEnable(){
-		this.getLogger().info("#======# TeamUp by Wehttam664 & TekNetworks #======#");
+		this.getLogger().info("#======# ChatChannels by Wehttam664 #======#");
 		this.getLogger().info("Initializing...");	
 			getCommand("channel").setExecutor(new CommandHandler(this));
 			getCommand("local").setExecutor(new CommandHandler(this));
@@ -30,13 +30,13 @@ public class ChatChannels extends JavaPlugin implements Listener{
 			new ChatHandler(this);
 		this.getLogger().info("Requesting disk response...");
 			this.saveDefaultConfig();
-			this.savePlayerList();
+			this.saveDefaultPlayersList();
 		this.getLogger().info("Ready! Current version is "+plugin.getDescription().getVersion());
 		// Eventually I'll check if the current version up-to-date.
-		this.getLogger().info("#===================================================#");
+		this.getLogger().info("#==========================================#");
 	}
 	
-	public void reloadPlayerList() {
+	public void reloadPlayersList() {
 		if (playersFile == null) {
 			playersFile = new File(plugin.getDataFolder(), "players.yml");
 		}
@@ -48,25 +48,25 @@ public class ChatChannels extends JavaPlugin implements Listener{
 	    }
 	}
 	
-	public FileConfiguration getPlayerList() {
+	public FileConfiguration getPlayersList() {
 		if (players == null) {
-	    	this.reloadPlayerList();
+	    	this.reloadPlayersList();
 		}
 		return players;
 	}
 	
-	public void savePlayerList() {
+	public void savePlayersList() {
 	    if (players == null || playersFile == null) {
 	    	return;
 	    }
 	    try {
-	        getPlayerList().save(playersFile);
+	        getPlayersList().save(playersFile);
 	    } catch (IOException ex) {
 	        plugin.getLogger().log(Level.SEVERE, "Could not save config to " + playersFile, ex);
 	    }
 	}
 	
-	public void saveDefaultPlayerList() {
+	public void saveDefaultPlayersList() {
 	    if (playersFile == null) {
 	        playersFile = new File(plugin.getDataFolder(), "players.yml");
 	    }
