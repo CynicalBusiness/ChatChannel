@@ -6,6 +6,7 @@ channels:
    local:
       tag: '[Local]'
       color: '7'
+      distance: 50
    zone:
       tag: '[Zone]'
       color: 'e'
