@@ -1,5 +1,7 @@
 package net.mayateck.ChatChannels;
 
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,16 +24,52 @@ public class ChatHandler implements Listener{
 		Player p = e.getPlayer();
 		String n = p.getName();
 		String m = e.getMessage();
+		Player[] pl = Bukkit.getOnlinePlayers();
 		String c = plugin.getPlayersList().getString("players."+n+".channel");
 		String t = plugin.getConfig().getString("channels."+c+".tag");
 		String tc = plugin.getConfig().getString("channels."+c+".color");
+		if (p.hasPermission("chatchannels.group.admin")){
+			n = "Admin-"+n;
+		} else if (p.hasPermission("chatchannels.group.mod")){
+			n = "Mod-"+n;
+		}
+		String msg="§"+tc+t+" "+n+": "+m;
 		if (c.equalsIgnoreCase("admin")){
-			Bukkit.getServer().broadcast("§"+tc+t+" "+n+": "+m, "chatchannels.group.admin");
+			Bukkit.getServer().broadcast(msg, "chatchannels.group.admin");
 		} else if (c.equalsIgnoreCase("mod")){
-			Bukkit.getServer().broadcast("§"+tc+t+" "+n+": "+m, "chatchannels.group.admin");
-			Bukkit.getServer().broadcast("§"+tc+t+" "+n+": "+m, "chatchannels.group.mod");
+			Bukkit.getServer().broadcast(msg, "chatchannels.group.admin");
+			Bukkit.getServer().broadcast(msg, "chatchannels.group.mod");
+		} else if (c.equalsIgnoreCase("help")){
+			for (Player cp : pl){
+				if (cp.hasPermission("chatchannels.group.admin") || cp.hasPermission("chatchannels.group.mod") || plugin.getPlayersList().getString("players."+cp.getName()+".channel").equalsIgnoreCase("help")){
+					cp.sendMessage(msg);
+				}
+			}
+		} else if (c.equalsIgnoreCase("zone")){
+			for (Player cp : pl){
+				if (cp.getWorld()==p.getWorld()){
+					cp.sendMessage(msg);
+				}
+			}
+		} else if (c.equalsIgnoreCase("local")){
+			for (Player cp : pl){
+				double pX = p.getLocation().getX();
+				double pZ = p.getLocation().getZ();
+				double cpX = cp.getLocation().getX();
+				double cpZ = cp.getLocation().getZ();
+				int dist = plugin.getConfig().getInt("channels.local.distance");
+				boolean xMatch = false;
+				boolean zMatch = false;
+				if (pX-cpX<dist || cpX-pX<dist){
+					xMatch=true;}
+				if (pZ-cpZ<dist || cpZ-pZ<dist){
+					zMatch=true;}
+				if ((cp.getWorld()==p.getWorld() && zMatch==true && xMatch==true) ||cp.hasPermission("chatchannels.group.admin") || cp.hasPermission("chatchannels.group.mod")){
+					cp.sendMessage(msg);
+				}
+			}
 		} else {
-			Bukkit.getServer().broadcastMessage("§"+tc+t+" "+n+": "+m);
+			Bukkit.getServer().broadcastMessage(msg);
 		}
 	}
 	
