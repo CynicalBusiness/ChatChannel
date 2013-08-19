@@ -18,7 +18,7 @@ channels:
       color: 'c'
    help:
       tag: '[Help]'
-      color: 'd'
+      color: 'a'
    broadcast:
       tag: '[Broadcast]'
       color: '3'
