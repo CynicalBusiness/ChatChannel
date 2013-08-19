@@ -24,7 +24,7 @@ public class CommandHandler implements CommandExecutor {
 					s.sendMessage(ChatChannels.head+" Successfully joined '"+c+"'.");
 					return true;
 				} else if (args[0].equalsIgnoreCase("broadcast")) {
-					s.sendMessage(ChatChannels.head+" You can't be on the broadcast channel!");
+					s.sendMessage(ChatChannels.head+" You can't join the broadcast channel!");
 					return true;
 				} else if (!s.hasPermission("chatchannels.channel."+c)){
 					s.sendMessage(ChatChannels.head+" You don't have permission for that channel!");
