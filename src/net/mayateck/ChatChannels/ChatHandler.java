@@ -35,7 +35,6 @@ public class ChatHandler implements Listener{
 		if (c.equalsIgnoreCase("admin")){
 			Bukkit.getServer().broadcast(msg, "chatchannels.group.admin");
 		} else if (c.equalsIgnoreCase("mod")){
-			Bukkit.getServer().broadcast(msg, "chatchannels.group.admin");
 			Bukkit.getServer().broadcast(msg, "chatchannels.group.mod");
 		} else if (c.equalsIgnoreCase("help")){
 			for (Player cp : pl){
@@ -45,7 +44,7 @@ public class ChatHandler implements Listener{
 			}
 		} else if (c.equalsIgnoreCase("zone")){
 			for (Player cp : pl){
-				if (cp.getWorld()==p.getWorld()){
+				if (cp.hasPermission("chatchannels.group.admin") || cp.hasPermission("chatchannels.group.mod") || cp.getWorld()==p.getWorld()){
 					cp.sendMessage(msg);
 				}
 			}
