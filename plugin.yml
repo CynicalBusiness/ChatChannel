@@ -10,7 +10,7 @@ commands:
       permission-message: 'Permission Error: You do not have access to switch channels.'
    chatchannels:
       description: ChatChannel Admin Commands
-      usage: /chatchannel <sub-command> <args>
+      usage: /chatchannels <sub-command> <args>
       permission: chatchannels.admin
       permission-message: 'Permission Error: You do not have access to that command.'
    local:
@@ -19,10 +19,15 @@ commands:
       permission: chatchannels.channel.local
       permission-message: 'Permission Error: You do not have access to the local channel.'
    global:
-      description: 'Command alias for /channel local.'
+      description: 'Command alias for /channel global.'
       usage: /global
       permission: chatchannels.channel.global
-      permission-message: 'Permission Error: You do not have access to the local channel.'
+      permission-message: 'Permission Error: You do not have access to the global channel.'
+   zone:
+      description: 'Command alias for /channel zone.'
+      usage: /zone
+      permission: chatchannels.channel.zone
+      permission-message: 'Permission Error: You do not have access to the zone channel.'
 
 permissions:
    chatchannels.*:
@@ -45,3 +50,8 @@ permissions:
       children:
          chatchannels.group.mod: false
          chatchannels.group.admin: false
+   chatchannels.admin:
+      description: 'Administrative commands for ChatChannel.'
+      children:
+         chatchannels.admin.reload: false
+         chatchannels.admin.broadcast: false
