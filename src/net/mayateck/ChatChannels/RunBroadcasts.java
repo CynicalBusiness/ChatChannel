@@ -32,7 +32,7 @@ public class RunBroadcasts implements Runnable{
 					pointer=0;
 				}
 			}
-			msg = msg.replace('&', '§');
+			msg = ChatColor.translateAlternateColorCodes('&', msg);
 			msg = "§"+c+b+" "+msg;
 			plugin.getServer().broadcastMessage(msg);
 		} else {
