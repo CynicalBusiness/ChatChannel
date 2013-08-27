@@ -8,7 +8,7 @@ commands:
       usage: /channel <channel>
       permission: chatchannels.channel
       permission-message: 'Permission Error: You do not have access to switch channels.'
-   chatchannel:
+   chatchannels:
       description: ChatChannel Admin Commands
       usage: /chatchannel <sub-command> <args>
       permission: chatchannels.admin
@@ -16,12 +16,12 @@ commands:
    local:
       description: 'Command alias for /channel local.'
       usage: /local
-      permission: chatchannels.local
+      permission: chatchannels.channel.local
       permission-message: 'Permission Error: You do not have access to the local channel.'
    global:
       description: 'Command alias for /channel local.'
       usage: /global
-      permission: chatchannels.local
+      permission: chatchannels.channel.global
       permission-message: 'Permission Error: You do not have access to the local channel.'
 
 permissions:
@@ -39,6 +39,7 @@ permissions:
          chatchannels.channel.mod: false
          chatchannels.channel.admin: false
          chatchannels.channel.help: true
+      default: true
    chatchannels.group:
       description: 'User status in relation to ChatChannel.'
       children:
