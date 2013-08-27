@@ -12,13 +12,13 @@ public class RunBroadcasts implements Runnable{
 	public RunBroadcasts(ChatChannels plugin){
 		this.plugin = plugin;
 	}
+	int pointer = 0;
 	@Override
 	public void run() {
 		boolean rand = ChatChannels.rand;
 		String b = ChatChannels.bTag;
 		String c = ChatChannels.bColor;
 		List<String> msgList = ChatChannels.casts;
-		int pointer = 0;
 		String msg = "";
 		if (msgList!=null){
 			if (rand==true){
@@ -28,7 +28,7 @@ public class RunBroadcasts implements Runnable{
 			} else {
 				msg = msgList.get(pointer);
 				pointer++;
-				if (pointer>msgList.size()){
+				if (pointer>=msgList.size()){
 					pointer=0;
 				}
 			}
