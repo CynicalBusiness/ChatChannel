@@ -1,6 +1,6 @@
 name: ChatChannels
 main: net.mayateck.ChatChannels.ChatChannels
-version: 0.01
+version: 2.05
 
 commands:
    channel:
