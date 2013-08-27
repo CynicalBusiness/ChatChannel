@@ -2,6 +2,7 @@ package net.mayateck.ChatChannels;
 
 import net.mayateck.ChatChannels.ChatChannels;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -44,13 +45,43 @@ public class CommandHandler implements CommandExecutor {
 				s.sendMessage(ChatChannels.head+"Looking for help? Try §7/chatchannels help§f.");
 				return true;
 			} else if(args.length==1){
-				if (args[0].equalsIgnoreCase("relaod")){
-					plugin.reloadConfig();
-					plugin.reloadPlayersList();
-					s.sendMessage(ChatChannels.head+"Configuration §ereloaded§f.");
+				if (args[0].equalsIgnoreCase("reload")){
+					if (s.hasPermission("chatchannels.admin.reload")){
+						plugin.reloadConfig();
+						plugin.reloadPlayersList();
+						s.sendMessage(ChatChannels.head+"Configuration §ereloaded§f.");
+						return true;
+					} else {
+						s.sendMessage(ChatChannels.head+"You §cdo not §fhave permission to reload ChatChannels.");
+						return true;
+					}
+				} else if (args[0].equalsIgnoreCase("help")){
+					s.sendMessage(ChatChannels.head+"§7#§c===§7# §9ChatChannels §fby §6Wehttam664 §7#§c===§7#");
+					s.sendMessage(ChatChannels.head+"Channel Switching: §7/channel [channel]&f.");
+					s.sendMessage(ChatChannels.head+"ChatChannels Admin command: §7/chatchannels [sub-command]§f.");
+					s.sendMessage(ChatChannels.head+"Additional help files can be found on the §9GitHub§f wiki.");
+					return true;
+				} else {
+					s.sendMessage(ChatChannels.head+"Unknown sub-command.");
+					s.sendMessage(ChatChannels.head+"Try §7/chatchannels help§f.");
 					return true;
 				}
+			} else {
+				s.sendMessage(ChatChannels.head+"Too many arguments!");
+				return true;
 			}
+		/*
+		 * Command aliases for channels.
+		 */
+		} else if(cmd.getName().equalsIgnoreCase("local")){
+			Bukkit.getServer().dispatchCommand(s, "channel local");
+			return true;
+		} else if(cmd.getName().equalsIgnoreCase("global")){
+			Bukkit.getServer().dispatchCommand(s, "channel global");
+			return true;
+		} else if(cmd.getName().equalsIgnoreCase("zone")){
+			Bukkit.getServer().dispatchCommand(s, "channel zone");
+			return true;
 		}
 		return false;
 	}
