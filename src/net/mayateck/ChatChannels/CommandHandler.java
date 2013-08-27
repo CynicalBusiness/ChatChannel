@@ -34,8 +34,22 @@ public class CommandHandler implements CommandExecutor {
 					return true;
 				}
 			} else {
-				s.sendMessage(ChatChannels.head+" Too many arguments!");
+				s.sendMessage(ChatChannels.head+" Invalid argument number.");
 				return true;
+			}
+		} else if (cmd.getName().equalsIgnoreCase("chatchannels")){
+			if (args.length==0){
+				s.sendMessage(ChatChannels.head+"§7#§c===§7# §9ChatChannels §fby §6Wehttam664 §7#§c===§7#");
+				s.sendMessage(ChatChannels.head+"Current Version: §ev"+plugin.getDescription().getVersion()+"§f.");
+				s.sendMessage(ChatChannels.head+"Looking for help? Try §7/chatchannels help§f.");
+				return true;
+			} else if(args.length==1){
+				if (args[0].equalsIgnoreCase("relaod")){
+					plugin.reloadConfig();
+					plugin.reloadPlayersList();
+					s.sendMessage(ChatChannels.head+"Configuration §ereloaded§f.");
+					return true;
+				}
 			}
 		}
 		return false;
